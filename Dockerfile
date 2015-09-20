@@ -16,4 +16,6 @@ ENV EVENTSTORE_WORKER_THREADS 12
 
 EXPOSE 1113 2113
 
-CMD ["/opt/EventStore-OSS-Linux-v3.0.5/clusternode", "--int-http-port=2113", "--int-tcp-post=1113", "--ext-http-port=2113", "--ext-tcp-port=1113", "--db=/data/db", "--log=/data/log", "--http-prefixes=http://*:2113/", "--ext-ip=0.0.0.0", "--run-projections=all"]
+WORKDIR /opt/EventStore-OSS-Linux-v$ES_VERSION
+
+CMD ["/opt/EventStore-OSS-Linux-v3.0.5/clusternode", "--ext-http-port=2113", "--ext-tcp-port=1113", "--db=/data/db", "--log=/data/log", "--http-prefixes=http://*:2113/", "--ext-ip=0.0.0.0", "--run-projections=all"]
